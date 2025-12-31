@@ -1,0 +1,4 @@
+pytest>=7.0
+pytest-playwright>=1.0
+playwright>=1.40
+# Add other dev/test-only packages here (coverage, tox, etc.)

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "fa-annual",
+    "code": "F-A-ANNUAL",
+    "name": "Fire Alarm - Annual Inspection",
+    "description": "Full annual fire alarm system inspection and report (site visit).",
+    "unit_price": 350.00,
+    "unit": "each",
+    "taxable": false,
+    "default_quantity": 1,
+    "category": "fire-alarm",
+    "notes": "Adjust price by device-count using per-device line item when applicable."
+  },
+  {
+    "id": "fa-device",
+    "code": "F-A-DEVICE",
+    "name": "Fire Alarm - Per Device Test",
+    "description": "Testing and verification per device (smoke/heat detectors, modules).",
+    "unit_price": 6.00,
+    "unit": "device",
+    "taxable": false,
+    "default_quantity": 10,
+    "category": "fire-alarm",
+    "notes": "Default quantity is a placeholder — replace with actual device count."
+  },
+  {
+    "id": "sp-per-head",
+    "code": "S-P-HEAD",
+    "name": "Sprinkler - Per Head Inspection",
+    "description": "Per-head inspection and basic test (recommended for annual checks).",
+    "unit_price": 12.00,
+    "unit": "head",
+    "taxable": false,
+    "default_quantity": 20,
+    "category": "sprinkler",
+    "notes": "Per-head ranges typically $10–$25 depending on head type."
+  },
+  {
+    "id": "sp-valve",
+    "code": "S-V-VALVE",
+    "name": "Sprinkler Valve Check",
+    "description": "Inspection and operation check for sprinkler control valves.",
+    "unit_price": 100.00,
+    "unit": "each",
+    "taxable": true,
+    "default_quantity": 1,
+    "category": "sprinkler",
+    "notes": "Often performed on a 5‑year or annual cadence depending on code."
+  },
+  {
+    "id": "sp-backflow",
+    "code": "S-B-BACKFLOW",
+    "name": "Backflow Preventer - 5yr Inspection",
+    "description": "5‑year internal backflow preventer inspection (includes reports).",
+    "unit_price": 225.00,
+    "unit": "each",
+    "taxable": true,
+    "default_quantity": 1,
+    "category": "sprinkler",
+    "notes": "Typical range $200–$250 depending on recorder and repairs."
+  },
+  {
+    "id": "ext-service",
+    "code": "E-S-SVC",
+    "name": "Fire Extinguisher - Service Call (minimum)",
+    "description": "Service call minimum (includes up to 1 extinguisher).",
+    "unit_price": 75.00,
+    "unit": "call",
+    "taxable": true,
+    "default_quantity": 1,
+    "category": "extinguisher",
+    "notes": "Additional extinguishers charged per-unit (see E-ADDL)."
+  },
+  {
+    "id": "ext-addl",
+    "code": "E-ADDL",
+    "name": "Fire Extinguisher - Additional Unit",
+    "description": "Per additional extinguisher serviced beyond the service call minimum.",
+    "unit_price": 15.95,
+    "unit": "each",
+    "taxable": true,
+    "default_quantity": 1,
+    "category": "extinguisher",
+    "notes": "Common local retail price circa $15–$16 per unit."
+  }
+]

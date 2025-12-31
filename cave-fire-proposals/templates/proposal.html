@@ -1,0 +1,54 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>{{ proposal.name or 'Proposal' }}</title>
+<style>body{font-family:Inter,system-ui,Arial;margin:2rem;color:#111}h1{color:#0a55a5}table{width:100%;border-collapse:collapse;margin-top:1rem}th,td{border-bottom:1px solid #eee;padding:.5rem;text-align:left}footer{margin-top:2rem;color:#666}</style>
+</head><body>
+<header>
+  {% if proposal.get('meta', {}).get('logo_data_url') %}
+    <img src="{{ proposal.get('meta', {}).get('logo_data_url') }}" alt="logo" style="height:64px;display:block;margin-bottom:.5rem"/>
+  {% endif %}
+  <h1>{{ proposal.name }}</h1>
+  <div>Proposal ID: {{ proposal.get('meta', {}).get('proposal_id') or proposal.proposal_id or '' }}</div>
+  <div>Date: {{ proposal.get('meta', {}).get('date') or proposal.date or '' }}</div>
+</header>
+<main>
+  <section>
+    <h2>Scope</h2>
+    <p>{{ proposal.sections[0].content }}</p>
+  </section>
+  <section>
+    <h2>Items</h2>
+    <table>
+      <thead><tr><th>Code</th><th>Description</th><th>Qty</th><th>Price</th></tr></thead>
+      <tbody>
+        {% for s in proposal.sections %}
+          {% for li in s.line_items %}
+            <tr>
+              <td>{{ li.code }}</td>
+              <td>{{ li.description }}</td>
+              <td>{{ li.quantity }}</td>
+              <td>${{ '%.2f'|format(li.unit_price if li.unit_price is defined else 0) }}</td>
+            </tr>
+          {% endfor %}
+          {% for ao in s.add_ons %}
+            <tr>
+              <td>{{ ao.code }}</td>
+              <td>Add-on</td>
+              <td>{{ ao.quantity }}</td>
+              <td>${{ '%.2f'|format(ao.unit_price if ao.unit_price is defined else 0) }}</td>
+            </tr>
+          {% endfor %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2>Totals</h2>
+    <div>Subtotal: ${{ '%.2f'|format(totals.subtotal) }}</div>
+    <div>Tax: ${{ '%.2f'|format(totals.tax) }}</div>
+    <div style="font-weight:700">Total: ${{ '%.2f'|format(totals.total) }}</div>
+  </section>
+</main>
+<footer>
+  <p>{{ proposal.notes }}</p>
+</footer>
+</body></html>

@@ -1,0 +1,18 @@
+:root{--bg:#fff;--fg:#111;--muted:#666;--accent:#1565c0}
+*{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+body{background:linear-gradient(180deg,#f8fafc,white);color:var(--fg);margin:0;padding:2rem}
+.container{max-width:980px;margin:0 auto;background:white;padding:1.5rem;border-radius:10px;box-shadow:0 6px 18px rgba(12,20,30,.06)}
+h1{margin:0 0 .25rem}
+.muted{color:var(--muted);margin-top:0}
+.controls{display:flex;gap:1rem;align-items:center;margin:1rem 0}
+.controls input{width:80px;padding:.25rem}
+table{width:100%;border-collapse:collapse;margin-top:0;border-top:1px solid #eee}
+th,td{padding:.5rem .75rem;border-bottom:1px solid #f3f4f6;text-align:left}
+th{font-weight:600;background:#fbfdff}
+input[type=number]{width:80px}
+.totals{display:flex;gap:1.5rem;padding-top:1rem;font-weight:600}
+.total{font-size:1.1rem}
+.note{color:var(--muted);margin-top:1rem}
+button{background:var(--accent);color:white;border:0;padding:.4rem .7rem;border-radius:6px;cursor:pointer}
+button:active{transform:translateY(1px)}
+.checkbox{display:inline-block}

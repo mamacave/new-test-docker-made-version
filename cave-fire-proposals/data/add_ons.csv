@@ -1,0 +1,8 @@
+id,code,name,description,unit_price,unit,taxable,default_quantity,category,notes
+fa-annual,F-A-ANNUAL,"Fire Alarm - Annual Inspection","Full annual fire alarm system inspection and report (site visit).",350.00,each,false,1,fire-alarm,"Adjust price by device-count using per-device line item when applicable."
+fa-device,F-A-DEVICE,"Fire Alarm - Per Device Test","Testing and verification per device (smoke/heat detectors, modules).",6.00,device,false,10,fire-alarm,"Default quantity is a placeholder — replace with actual device count."
+sp-per-head,S-P-HEAD,"Sprinkler - Per Head Inspection","Per-head inspection and basic test (recommended for annual checks).",12.00,head,false,20,sprinkler,"Per-head ranges typically $10–$25 depending on head type."
+sp-valve,S-V-VALVE,"Sprinkler Valve Check","Inspection and operation check for sprinkler control valves.",100.00,each,true,1,sprinkler,"Often performed on a 5‑year or annual cadence depending on code."
+sp-backflow,S-B-BACKFLOW,"Backflow Preventer - 5yr Inspection","5‑year internal backflow preventer inspection (includes reports).",225.00,each,true,1,sprinkler,"Typical range $200–$250 depending on recorder and repairs."
+ext-service,E-S-SVC,"Fire Extinguisher - Service Call (minimum)","Service call minimum (includes up to 1 extinguisher).",75.00,call,true,1,extinguisher,"Additional extinguishers charged per-unit (see E-ADDL)."
+ext-addl,E-ADDL,"Fire Extinguisher - Additional Unit","Per additional extinguisher serviced beyond the service call minimum.",15.95,each,true,1,extinguisher,"Common local retail price circa $15–$16 per unit."

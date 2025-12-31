@@ -1,0 +1,6 @@
+fastapi[all]
+uvicorn[standard]
+python-docx
+Jinja2
+requests
+pytest

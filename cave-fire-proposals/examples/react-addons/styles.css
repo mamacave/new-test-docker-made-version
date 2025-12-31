@@ -1,0 +1,6 @@
+body{font-family:Inter,system-ui,Arial;margin:2rem;color:#111}
+.container{max-width:980px;margin:0 auto;background:white;padding:1.2rem;border-radius:8px}
+.controls{margin-bottom:1rem}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:.5rem;border-bottom:1px solid #eee;text-align:left}
+.totals{margin-top:1rem;font-weight:700}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Add‑Ons UI Example — Cave Fire Proposals</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Add‑Ons Example (Seeds)</h1>
+    <p class="muted">Loads <code>seeds/add_ons.json</code> and demonstrates quantity/tax calculations and CSV export.</p>
+
+    <div class="controls">
+      <label>Tax rate (%): <input id="taxRate" type="number" step="0.01" value="8.75" /></label>
+
+      <label>Proposal ID: <input id="proposalId" type="text" /></label>
+      <label>Date: <input id="proposalDate" type="date" /></label>
+      <label>Logo: <input id="logo" type="file" accept="image/*" /></label>
+      <button id="exportCsv">Export CSV</button>
+    </div>
+    <div style="margin:0.5rem 0">
+      <canvas id="sigCanvas" width="600" height="150" style="border:1px solid #eee"></canvas>
+      <div><button id="clearSig">Clear</button> <button id="saveSig">Save Signature</button></div>
+    </div>
+    <div id="logoPreview"></div>
+
+    <table id="addonsTable">
+      <thead>
+        <tr>
+          <th>Include</th>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Unit</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Taxable</th>
+          <th>Line Tax</th>
+          <th>Line Total</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="totals">
+      <div>Subtotal: <span id="subtotal">$0.00</span></div>
+      <div>Tax: <span id="taxtotal">$0.00</span></div>
+      <div class="total">Grand Total: <span id="grandtotal">$0.00</span></div>
+    </div>
+
+    <p class="note">Tip: run <code>python3 -m http.server 8000</code> from the repository root and open <code>http://localhost:8000/examples/addons-ui/</code>.</p>
+  </main>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

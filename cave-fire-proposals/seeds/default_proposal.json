@@ -1,0 +1,34 @@
+{
+  "id": "proposal-template-01",
+  "name": "Commercial Service Proposal (Phoenix)",
+  "brand": "Cave Fire Protection",
+  "currency": "USD",
+  "default_terms": "Net 30",
+  "proposal_id_prefix": "CFP",
+  "sections": [
+    {
+      "title": "Scope of Work",
+      "content": "Annual inspections and routine testing to ensure compliance with NFPA and local codes."
+    },
+    {
+      "title": "Services",
+      "line_items": [
+        {
+          "code": "F-A-ANNUAL",
+          "description": "Fire Alarm - Annual Inspection",
+          "quantity": 1
+        },
+        {
+          "code": "S-P-HEAD",
+          "description": "Sprinkler - Per Head Inspection",
+          "quantity": 20
+        }
+      ],
+      "add_ons": [
+        { "code": "E-S-SVC", "quantity": 1 },
+        { "code": "E-ADDL", "quantity": 2 }
+      ]
+    }
+  ],
+  "notes": "Prices are estimates; final invoice will reflect actual device counts and local taxes/fees."
+}

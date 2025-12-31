@@ -1,0 +1,96 @@
+# Deployment-specific Makefile commands
+# Include this in your main Makefile or use directly
+
+.PHONY: docker-build docker-push docker-run docker-test deploy-k8s deploy-compose
+
+# Docker commands
+docker-build:
+	docker build -t cave-fire-proposals:latest .
+
+docker-build-multiarch:
+	docker buildx build --platform linux/amd64,linux/arm64 -t cave-fire-proposals:latest .
+
+docker-push:
+	docker tag cave-fire-proposals:latest ghcr.io/$(GITHUB_REPO):latest
+	docker push ghcr.io/$(GITHUB_REPO):latest
+
+docker-run:
+	docker run -p 8000:8000 cave-fire-proposals:latest
+
+docker-test:
+	docker run --rm cave-fire-proposals:latest python -m pytest tests/ -q
+
+docker-shell:
+	docker run -it --entrypoint /bin/bash cave-fire-proposals:latest
+
+# Docker Compose commands
+compose-up:
+	docker-compose up -d
+
+compose-down:
+	docker-compose down
+
+compose-logs:
+	docker-compose logs -f api
+
+compose-prod-up:
+	docker-compose -f deployment/docker-compose.prod.yml up -d
+
+compose-prod-down:
+	docker-compose -f deployment/docker-compose.prod.yml down
+
+# Kubernetes commands
+k8s-apply:
+	kubectl apply -f deployment/kubernetes-deployment.yml
+
+k8s-delete:
+	kubectl delete -f deployment/kubernetes-deployment.yml
+
+k8s-status:
+	kubectl get all -n cave-fire-proposals
+
+k8s-logs:
+	kubectl logs -n cave-fire-proposals -l app=cave-fire-proposals-api -f
+
+k8s-describe:
+	kubectl describe deployment cave-fire-proposals-api -n cave-fire-proposals
+
+k8s-scale:
+	kubectl scale deployment cave-fire-proposals-api --replicas=$(REPLICAS) -n cave-fire-proposals
+
+k8s-rollout-status:
+	kubectl rollout status deployment/cave-fire-proposals-api -n cave-fire-proposals
+
+k8s-rollback:
+	kubectl rollout undo deployment/cave-fire-proposals-api -n cave-fire-proposals
+
+# Helm commands (if using Helm)
+helm-install:
+	helm install cave-fire-proposals ./chart \
+		--namespace cave-fire-proposals \
+		--create-namespace \
+		--values deployment/helm-values.yml
+
+helm-upgrade:
+	helm upgrade cave-fire-proposals ./chart \
+		--namespace cave-fire-proposals \
+		--values deployment/helm-values.yml
+
+helm-uninstall:
+	helm uninstall cave-fire-proposals --namespace cave-fire-proposals
+
+# Health check
+health-check:
+	./deployment/healthcheck.sh
+
+# Security scan
+security-scan:
+	docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+		aquasec/trivy image cave-fire-proposals:latest
+
+# Clean up
+clean-docker:
+	docker system prune -af --volumes
+
+clean-k8s:
+	kubectl delete namespace cave-fire-proposals
